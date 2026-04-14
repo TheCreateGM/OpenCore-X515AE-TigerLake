@@ -11,55 +11,60 @@
 - **Bluetooth:** Intel Bluetooth 9460/9560
 - **Touchpad:** ELAN1200
 
-## Required Files
+## Downloaded Files (Included)
 
-### SSDT Files (Place in EFI/OC/ACPI/)
+### SSDT Files (In EFI/OC/ACPI/)
+- SSDT-PLUG.aml
+- SSDT-EC-USBX.aml
+- SSDT-AWAC.aml
+- SSDT-PNLF.aml
+- SSDT-XOSI.aml
+- SSDT-SBUS-MCHC.aml
 
-Download pre-compiled SSDTs from: https://github.com/acidanthera/OpenCoreACPI
+### Drivers (In EFI/OC/Drivers/)
+- OpenRuntime.efi
+- HfsPlus.efi
+- OpenCanopy.efi
+- BOOTx64.efi
+- OpenShell.efi
 
-Required SSDTs:
-- `SSDT-PLUG.aml` - CPU power management
-- `SSDT-EC-USBX.aml` - Embedded Controller fix
-- `SSDT-AWAC.aml` - RTC fix
-- `SSDT-PNLF.aml` - Backlight control
-- `SSDT-XOSI.aml` - OS compatibility
-- `SSDT-SBUS-MCHC.aml` - SBUS fix
-
-### Drivers (Place in EFI/OC/Drivers/)
-
-- `OpenRuntime.efi` - Required
-- `HfsPlus.efi` - Required for macOS drives
-- `OpenCanopy.efi` - GUI picker (optional)
-
-### Kexts (Place in EFI/OC/Kexts/)
-
-**Core:**
+### Core Kexts Downloaded (In EFI/OC/Kexts/)
 - Lilu.kext
-- VirtualSMC.kext + SMCBatteryManager.kext + SMCProcessor.kext
+- VirtualSMC.kext
+- SMCBatteryManager.kext
+- SMCProcessor.kext
+- SMCSuperIO.kext
 - WhateverGreen.kext
 - AppleALC.kext
+- AppleALCU.kext
 
-**Input:**
-- VoodooPS2Controller.kext
-- VoodooI2C.kext + VoodooI2CHID.kext (for ELAN touchpad)
+## Additional Kexts to Download Manually
 
-**Connectivity:**
-- AirportItlwm.kext (Intel Wi-Fi AX201)
-- IntelBluetoothFirmware.kext
-- BlueToolFixup.kext
+Download these from their GitHub repos and place in EFI/OC/Kexts/:
 
-**USB:**
-- USBToolBox.kext
-- UTBMap.kext (after mapping)
+**Input (for ELAN1200 touchpad):**
+- VoodooPS2Controller.kext: https://github.com/acidanthera/VoodooPS2/releases
+- VoodooI2C.kext: https://github.com/acidanthera/VoodooI2C/releases
+- VoodooI2CHID.kext: https://github.com/acidanthera/VoodooI2C/releases
+- VoodooGPIO.kext, VoodooInput.kext (included in VoodooI2C)
 
-**Power:**
-- CPUFriend.kext + CPUFriendDataProvider.kext
-- NVMeFix.kext
+**Connectivity (Intel Wi-Fi AX201):**
+- AirportItlwm.kext: https://github.com/OpenIntelWireless/itlwm/releases
+- IntelBluetoothFirmware.kext: https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases
+- BlueToolFixup.kext: https://github.com/acidanthera/BluS/releases
 
-**ASUS:**
-- AsusSMC.kexp (for WMI hotkeys)
-- BrightnessKeys.kext
-- ECEnabler.kext
+**Power Management:**
+- CPUFriend.kext: https://github.com/acidanthera/CPUFriend/releases
+- CPUFriendDataProvider.kext (create for i5-1135G7)
+
+**Additional Fixes:**
+- NVMeFix.kext: https://github.com/acidanthera/NVMeFix/releases
+- BrightnessKeys.kext: https://github.com/acidanthera/BrightnessKeys/releases
+- ECEnabler.kext: https://github.com/acidanthera/ECEnabler/releases
+- AsusSMC.kext: https://github.com/hackintosh-stuff/AsusSMC/releases
+
+**USB Mapping:**
+- USBToolBox.kext: https://github.com/USBToolBox/tool/releases
 
 ## SMBIOS Configuration
 
@@ -112,20 +117,13 @@ Uses ICLLP framebuffer compatible with Iris Xe:
 
 ## Installation Steps
 
-1. Copy EFI folder to ESP partition
-2. Generate SMBIOS serials using GenSMBIOS
-3. Obtain SSDT files from OpenCoreACPI repo
-4. Download latest kexts from:
-   - https://github.com/acidanthera/Lilu
-   - https://github.com/acidanthera/VirtualSMC
-   - https://github.com/acidanthera/WhateverGreen
-   - https://github.com/acidanthera/AppleALC
-   - https://github.com/acidanthera/AirportItlwm
-   - https://github.com/OpenIntelWireless
-5. Download drivers from OpenCore releases
-6. Test boot with verbose mode
-7. Adjust audio layout if needed
-8. Map USB ports after installation
+1. Download remaining kexts listed above
+2. Copy all kexts to EFI/OC/Kexts/
+3. Copy EFI folder to ESP partition
+4. Generate SMBIOS serials using GenSMBIOS
+5. Test boot with verbose mode
+6. Adjust audio layout if needed
+7. Map USB ports after installation
 
 ## Post-Installation
 
