@@ -1,5 +1,13 @@
 # OpenCore EFI Configuration for ASUS VivoBook X515AE (Tiger Lake)
 
+## Supported macOS Versions
+
+- **macOS 11** Big Sur
+- **macOS 12** Monterey  
+- **macOS 13** Ventura
+- **macOS 14** Sonoma
+- **macOS 15** Sequoia
+
 ## System Specifications
 
 - **Model:** ASUS VivoBook X515EA/X515AE
@@ -11,7 +19,7 @@
 - **Bluetooth:** Intel Bluetooth 9460/9560
 - **Touchpad:** ELAN1200
 
-## Downloaded Files (Included)
+## Downloaded Files (All Included)
 
 ### SSDT Files (In EFI/OC/ACPI/)
 - SSDT-PLUG.aml
