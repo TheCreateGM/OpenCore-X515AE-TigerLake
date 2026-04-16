@@ -8,6 +8,7 @@
 |---------|-------|-------|
 | Secure Boot | Disabled | Required for OpenCore |
 | Fast Boot | Disabled | Prevents EFI changes |
+| VMD Controller | Disabled | **CRITICAL** - NVMe will NOT work if enabled |
 | BIOS Recovery | Disable | Not needed |
 
 ### Enable (or Enable)
@@ -90,6 +91,7 @@ Advanced > Graphics > DVMT Pre-Alloc
 Required Changes:
 - Disable Secure Boot
 - Disable Fast Boot  
+- **DISABLE VMD CONTROLLER** (Critical for NVMe)
 - Enable AHCI Mode
 - Enable XHCI/EHCI Hand-off
 - Set DVMT to 64MB+
